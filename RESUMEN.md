@@ -144,3 +144,13 @@ npx ng build --base-href ./         # versión para publicar -> dist/boda-anders
   - `src/app/i18n/i18n.ts`: el servicio que guarda el idioma elegido.
 - En español la etiqueta de cada boda dice "Boda US" / "Boda NIC".
 - La animación también tiene versión en español: `public/video/intro-*-es.mp4`.
+
+## Canción de fondo desde archivo propio (16 nov)
+
+- La música ya no usa YouTube ni Spotify. Suena el archivo `public/audio/just-the-two-of-us.mp3`:
+  - Viene del MP3 que mandó Sebastián, recortado sin los silencios del inicio y del final y
+    convertido a 128 kbps.
+  - Arranca al tocar "Open invitation" y se repite sin parar.
+  - El botón flotante de abajo a la derecha la pausa y la reanuda.
+  - Si el navegador bloquea el arranque, el botón parpadea y aparece "Tap ▶ to play our song".
+- Para cambiar la canción, reemplaza ese archivo o cambia `music.src` en `wedding.config.ts`.

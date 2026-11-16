@@ -39,42 +39,33 @@
   </div>
 }
 
-<div class="player" [class.player--visible]="stage() === 'done'">
-  <div class="player__panel" [class.player__panel--open]="panel()">
-    <div class="player__head">
-      <span class="player__title">{{ w().music.title }}</span>
-      <span class="player__artist">{{ w().music.artist }}</span>
-    </div>
-    @if (hint()) {
-      <p class="player__hint">{{ t().tapToPlay }}</p>
-    }
-    <div class="player__yt" [hidden]="source() !== 'youtube'"><div #yt></div></div>
-    <div class="player__sp" [hidden]="source() !== 'spotify'"><div #sp></div></div>
-  </div>
+<!-- La canción de fondo: suena en bucle mientras se recorre la página. -->
+<audio
+  #audio
+  [src]="w().music.src"
+  loop
+  preload="auto"
+  (playing)="onPlaying()"
+  (pause)="onPaused()"
+></audio>
 
-  <div class="player__buttons">
-    <button
-      type="button"
-      class="player__more"
-      (click)="togglePanel()"
-      [attr.aria-expanded]="panel()"
-      [attr.aria-label]="panel() ? t().hidePlayer : t().showPlayer"
-    >
-      {{ panel() ? '×' : '♫' }}
-    </button>
-    <button
-      type="button"
-      class="player__toggle"
-      [class.player__toggle--on]="playing()"
-      (click)="toggle()"
-      [attr.aria-label]="playing() ? t().pause : t().play"
-      [attr.aria-pressed]="playing()"
-    >
-      @if (playing()) {
-        <span class="bars" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
-      } @else {
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l11-6.5z" /></svg>
-      }
-    </button>
-  </div>
+<div class="player" [class.player--visible]="stage() === 'done'">
+  @if (hint()) {
+    <p class="player__hint" role="status">{{ t().tapToPlay }}</p>
+  }
+  <button
+    type="button"
+    class="player__toggle"
+    [class.player__toggle--on]="playing()"
+    [class.player__toggle--hint]="hint()"
+    (click)="toggle()"
+    [attr.aria-label]="(playing() ? t().pause : t().play) + ' · ' + w().music.title"
+    [attr.aria-pressed]="playing()"
+  >
+    @if (playing()) {
+      <span class="bars" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+    } @else {
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l11-6.5z" /></svg>
+    }
+  </button>
 </div>

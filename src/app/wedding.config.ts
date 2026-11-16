@@ -374,16 +374,13 @@ export const WEDDING = {
   },
 
   /**
-   * Canción de fondo: suena completa con el reproductor de YouTube.
-   * Si YouTube no deja reproducirla dentro de la página (algunos videos tienen
-   * la inserción desactivada), se usa el reproductor de Spotify como respaldo.
+   * Canción de fondo: el archivo está en public/audio/. Arranca al tocar
+   * "Open invitation" y se repite mientras se recorre la página.
    */
   music: {
     title: 'Just the Two of Us',
     artist: 'Grover Washington, Jr. feat. Bill Withers',
-    /** Video "Official Audio": https://www.youtube.com/watch?v=6IO74QV6wHY */
-    youtubeVideoId: '6IO74QV6wHY',
-    spotifyTrackId: '2tH28YyKYOldxhuBHoI79M',
+    src: 'audio/just-the-two-of-us.mp3',
   },
 
   rsvp: {
