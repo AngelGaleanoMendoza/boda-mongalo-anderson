@@ -109,3 +109,26 @@ npx ng build --base-href ./         # versión para publicar -> dist/boda-anders
   `#home`, `#countdown`, `#story`, `#schedule`, `#location`, `#gallery`, `#gifts`, `#rsvp`.
 - El formulario RSVP envía estos campos:
   `name, contact, attending, guests, dietary, message`.
+
+## Contenido de Melanie, animación y música por YouTube (16 nov)
+
+- Nuevas secciones con los textos de Melanie:
+  - "Our Love Story — A Love Beyond Distance", con su frase.
+  - "Two Countries, One Love Story", que explica por qué hay dos bodas.
+  - "Wedding Details": el lugar y el código de vestimenta de cada boda.
+  - "Travel & Accommodations": Nicaragua y Texas.
+  - "Frequently Asked Questions": 14 preguntas.
+  Todo el texto está en `wedding.config.ts`.
+- La portada de entrada muestra la frase "Not even distance could separate what God had
+  destined to unite."
+- **Animación de entrada:** está hecha con Remotion, en la carpeta `video/`, y se ve al
+  tocar "Open invitation":
+  - Texas y Managua se unen con un arco dorado y un corazón.
+  - Luego J y M se juntan y aparece la frase.
+  - Hay dos versiones: `public/video/intro-landscape.mp4` y `public/video/intro-portrait.mp4`.
+  - Para cambiarla: `cd video && npm install && npm run studio` (vista previa) y luego
+    `npm run render`.
+- **Canción:** "Just the Two of Us" (Grover Washington, Jr. feat. Bill Withers) suena
+  completa con el reproductor de YouTube, video 6IO74QV6wHY.
+  - El reproductor se ve en el panel ♫, porque YouTube pide que sea visible.
+  - Si YouTube no permite insertar ese video, se usa Spotify de respaldo.

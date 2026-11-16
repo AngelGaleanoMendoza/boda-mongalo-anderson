@@ -1,0 +1,20 @@
+{
+  "name": "boda-intro-video",
+  "private": true,
+  "description": "Animación de entrada de la invitación, hecha con Remotion. Se renderiza a public/video/.",
+  "scripts": {
+    "studio": "remotion studio src/index.ts",
+    "render": "node render.mjs"
+  },
+  "dependencies": {
+    "@remotion/bundler": "4.0.539",
+    "@remotion/cli": "4.0.539",
+    "@remotion/google-fonts": "4.0.539",
+    "@remotion/renderer": "4.0.539",
+    "@types/react": "19.1.8",
+    "react": "19.1.0",
+    "react-dom": "19.1.0",
+    "remotion": "4.0.539",
+    "typescript": "5.9.3"
+  }
+}

@@ -1,34 +1,30 @@
-<section id="location" class="section section--sand">
+<section id="details" class="section section--sand">
   <div class="container">
     <header class="section-head" appReveal>
-      <span class="eyebrow">Getting there</span>
-      <h2 class="section-title">Location</h2>
+      <span class="eyebrow">Where &amp; what to wear</span>
+      <h2 class="section-title">Wedding Details</h2>
     </header>
 
     <div class="venues">
-      @for (venue of venues; track venue.label) {
+      @for (d of details; track d.label) {
         <article class="venue" appReveal>
+          <h3 class="venue__label"><b class="code">{{ d.label.split(' ')[0] }}</b> Wedding</h3>
+          <p class="venue__place">{{ d.place }}</p>
+
           <app-icon name="pin" class="venue__icon" />
-          <span class="eyebrow">{{ venue.label }}</span>
-          <h3 class="venue__name">{{ venue.name }}</h3>
-          <p class="venue__meta">{{ venue.time }}</p>
-          <p class="venue__address">{{ venue.address }}</p>
-          <a class="btn btn--outline" [href]="venue.mapsUrl" target="_blank" rel="noopener">
-            View on map
-          </a>
+          <span class="eyebrow">Wedding venue</span>
+          <p class="venue__name">{{ d.venue }}</p>
+          <p class="venue__address">{{ d.address }}</p>
+          @if (d.mapsUrl) {
+            <a class="btn btn--outline" [href]="d.mapsUrl" target="_blank" rel="noopener">View on map</a>
+          }
+
+          <hr class="divider" />
+          <span class="eyebrow">Dress code</span>
+          <p class="venue__dress">{{ d.dressCode.title }}</p>
+          <p class="venue__address">{{ d.dressCode.description }}</p>
         </article>
       }
-    </div>
-
-    <div class="dress" appReveal>
-      <span class="eyebrow">Dress code</span>
-      <h3 class="dress__title">{{ dress.title }}</h3>
-      <p class="dress__desc">{{ dress.description }}</p>
-      <ul class="dress__palette" aria-label="Suggested color palette">
-        @for (color of dress.palette; track color) {
-          <li [style.background]="color"></li>
-        }
-      </ul>
     </div>
   </div>
 </section>

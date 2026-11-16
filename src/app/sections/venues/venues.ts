@@ -10,6 +10,5 @@ import { RevealDirective } from '../../shared/reveal.directive';
   styleUrl: './venues.css',
 })
 export class Venues {
-  protected readonly venues = WEDDING.venues;
-  protected readonly dress = WEDDING.dressCode;
+  protected readonly details = WEDDING.details;
 }

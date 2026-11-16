@@ -118,7 +118,7 @@
   transform: translateY(-3.5px) rotate(-45deg);
 }
 
-@media (max-width: 960px) {
+@media (max-width: 1200px) {
   .burger {
     display: block;
   }
@@ -157,4 +157,22 @@
   .menu__rsvp {
     margin-top: 10px;
   }
+}
+
+/* Sombra suave detrás del menú transparente, para que se lea sobre fotos claras. */
+.nav::before {
+  content: '';
+  position: absolute;
+  inset: 0 0 -24px;
+  background: linear-gradient(rgba(20, 22, 16, 0.55), rgba(20, 22, 16, 0));
+  pointer-events: none;
+  transition: opacity 0.35s var(--ease);
+}
+
+.nav--solid::before {
+  opacity: 0;
+}
+
+.nav__inner {
+  position: relative;
 }

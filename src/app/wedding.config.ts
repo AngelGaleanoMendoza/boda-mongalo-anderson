@@ -28,12 +28,34 @@ export interface ScheduleItem {
   icon: 'rings' | 'glass' | 'dinner' | 'music' | 'moon';
 }
 
-export interface Venue {
+/** Detalles de cada boda: lugar y código de vestimenta. */
+export interface WeddingDetail {
   label: string;
-  name: string;
+  place: string;
+  venue: string;
   address: string;
-  time: string;
+  /** Vacío mientras no haya lugar confirmado. */
   mapsUrl: string;
+  dressCode: { title: string; description: string };
+}
+
+/** Bloque de "Travel & Accommodations" para cada país. */
+export interface TravelGuide {
+  id: string;
+  flag: string;
+  greeting: string;
+  tagline: string;
+  intro: string[];
+  venue: { name: string; address: string };
+  accommodations: string[];
+  phones: string[];
+  transportation: string[];
+  closing: string;
+}
+
+export interface Faq {
+  question: string;
+  answer: string;
 }
 
 export interface GalleryPhoto {
@@ -87,8 +109,14 @@ export const WEDDING = {
     'We can\'t wait to celebrate with you.',
   ],
 
+  /** Frase de la portada de entrada y de la animación. */
+  introQuote: 'Not even distance could separate what God had destined to unite.',
+
   story: {
-    title: 'Our Story',
+    title: 'Our Love Story',
+    subtitle: 'A Love Beyond Distance',
+    quote:
+      'Some souls are destined to find one another, no matter the distance, the time, or the paths they must travel.',
     /**
      * Fotos del carrusel de "Nuestra historia" (números de images/gallery/NN.jpg).
      * `bw: true` la muestra en blanco y negro.
@@ -110,28 +138,185 @@ export const WEDDING = {
       { n: 12, bw: true },
     ],
     paragraphs: [
-      // POR CONFIRMAR: escribe aquí cómo se conocieron.
-      'It all started with a conversation neither of us wanted to end. Since then we have shared trips, laughter, plans and countless cups of coffee, and we realized the best part of every day was living it together.',
-      'One day, among cobblestone streets and colonial walls, came the most important question… and the answer was a joyful yes. Now we want to take the next step surrounded by the people we love most.',
+      'Our love story is a beautiful reminder that true love knows no boundaries. Though miles once stood between us, fate had already begun writing a story that would bring our hearts together.',
+      'What began as a love across the distance blossomed into a promise of forever, reminding us that when two souls are meant to be, no distance is ever too great.',
+      'Today, with grateful hearts and God’s blessings, we celebrate not only the journey that brought us together but also the beautiful life we are building side by side.',
     ],
   },
 
-  venues: [
+  /** Sección "Two Countries, One Love Story": por qué hay dos bodas. */
+  twoWeddings: {
+    title: 'Two Countries, One Love Story',
+    quote: 'Two countries, two celebrations, one everlasting promise.',
+    intro: [
+      'Our love story brings together not only two hearts, but also two countries, two cultures, and the people we hold most dear.',
+      'To honor the places that have shaped our journey, we have chosen to celebrate our marriage through two meaningful occasions.',
+    ],
+    celebrations: [
+      {
+        code: 'US',
+        place: 'Texas, United States',
+        text: 'A celebration of love, joy, and togetherness, surrounded by cherished family and friends as we commemorate the beginning of our forever.',
+      },
+      {
+        code: 'NIC',
+        place: 'Managua, Nicaragua',
+        text: 'A sacred celebration of our union before God, where we will receive the Sacrament of Holy Matrimony and exchange our vows in the presence of those closest to our hearts.',
+      },
+    ],
+    closing: [
+      'Though separated by borders, both celebrations are united by one beautiful purpose: to honor our love, our faith, and the families who have supported us along the way.',
+      'It would be our greatest joy to share these unforgettable moments with you.',
+    ],
+  },
+
+  /** Detalles de cada boda (sección "Wedding Details"), en el mismo orden que `weddings`. */
+  details: [
     {
-      label: 'Ceremony',
-      name: 'Ceremony venue', // POR CONFIRMAR
-      address: 'Address to be announced',
-      time: '4:00 PM',
-      mapsUrl: 'https://maps.google.com',
+      label: 'US Wedding',
+      place: 'Texas, United States',
+      venue: 'Coming Soon',
+      address: 'Venue details and location will be announced soon.',
+      mapsUrl: '',
+      dressCode: {
+        title: 'Western Chic Black Tie',
+        description: 'Formal eveningwear with sophisticated Western touches.',
+      },
     },
     {
-      label: 'Reception',
-      name: 'Reception venue', // POR CONFIRMAR
-      address: 'Address to be announced',
-      time: '6:00 PM',
-      mapsUrl: 'https://maps.google.com',
+      label: 'NIC Wedding',
+      place: 'Managua, Nicaragua',
+      venue: 'Ángeles – Centro de Eventos',
+      address: 'Balcones de Santo Domingo, Managua, Nicaragua',
+      mapsUrl:
+        'https://www.google.com/maps/search/?api=1&query=%C3%81ngeles%20Centro%20de%20Eventos%20Balcones%20de%20Santo%20Domingo%20Managua',
+      dressCode: {
+        title: 'Formal Attire',
+        description: 'Floor-length gowns and elegant suits are encouraged.',
+      },
     },
-  ] satisfies Venue[],
+  ] satisfies WeddingDetail[],
+
+  /** Sección "Travel & Accommodations". */
+  travel: [
+    {
+      id: 'nicaragua',
+      flag: '🇳🇮',
+      greeting: '¡Bienvenidos a Nicaragua!',
+      tagline: 'The Land of Lakes and Volcanoes',
+      intro: [
+        'With hearts full of joy, we welcome you to beautiful Nicaragua, a land of breathtaking landscapes, rich traditions, and unforgettable charm.',
+        'It means so much to us to share this special place with our loved ones as we celebrate our love and begin this beautiful chapter together.',
+      ],
+      venue: {
+        name: 'Ángeles – Centro de Eventos',
+        address: 'Balcones de Santo Domingo, Managua, Nicaragua.',
+      },
+      accommodations: [
+        'For your convenience, our wedding venue offers charming private cottages (casitas) available for short-term rentals, perfect for guests who wish to stay close to the celebration.',
+        'We encourage you to inquire about availability and make reservations in advance.',
+      ],
+      phones: ['+505 8926-8202', '+505 5831-9742'],
+      transportation: [
+        'For guests traveling from the United States, please reach out to the bride directly for assistance with transportation arrangements and travel recommendations.',
+        'We want to make your journey to Nicaragua as smooth and enjoyable as possible!',
+      ],
+      closing:
+        'We hope you fall in love with the beauty of Nicaragua and create unforgettable memories during your stay!',
+    },
+    {
+      id: 'texas',
+      flag: '🇺🇸',
+      greeting: '¡Bienvenidos a Texas!',
+      tagline: 'The Lone Star State',
+      intro: [
+        'With great excitement, we welcome our family and friends to Texas, a place known for its Southern charm, timeless traditions, and warm hospitality.',
+        'We are beyond grateful to celebrate another beautiful chapter of our love story surrounded by the people who mean the most to us.',
+      ],
+      venue: {
+        name: 'Coming Soon',
+        address: 'Venue details and location will be announced soon.',
+      },
+      accommodations: [
+        'Hotel recommendations and nearby accommodation options will be shared once our wedding venue has been finalized.',
+        'We encourage our out-of-town guests to check back for updates as we continue planning.',
+      ],
+      phones: [],
+      transportation: [],
+      closing:
+        'We can’t wait to welcome you to Texas and celebrate a day filled with love, laughter, and unforgettable memories!',
+    },
+  ] satisfies TravelGuide[],
+
+  faqs: [
+    {
+      question: 'Are children welcome?',
+      answer:
+        'Children are warmly welcomed at our Texas celebration. However, our wedding in Nicaragua will be an adults-only affair. We sincerely appreciate your understanding.',
+    },
+    {
+      question: 'What is the dress code?',
+      answer:
+        'Texas: Western Chic Black Tie — formal eveningwear with sophisticated Western touches. Nicaragua: Formal Attire — floor-length gowns and elegant suits are encouraged.',
+    },
+    {
+      question: 'May I bring a plus-one?',
+      answer:
+        'We kindly request that attendance be limited to the guests specifically named on your invitation.',
+    },
+    {
+      question: 'When should I RSVP?',
+      answer:
+        'We kindly ask that you confirm your attendance by the RSVP deadline indicated on your invitation.',
+    },
+    {
+      question: 'What time should I arrive?',
+      answer:
+        'We recommend arriving 30 minutes before the ceremony to allow for a relaxed and timely beginning.',
+    },
+    {
+      question: 'Will accommodations be recommended?',
+      answer: 'Please visit our Travel & Accommodations section for recommended places to stay.',
+    },
+    {
+      question: 'Why are there two wedding celebrations?',
+      answer:
+        'Each celebration holds a special place in our hearts. Our Texas wedding brings our loved ones together, while our Nicaragua wedding honors our union through the sacrament of Holy Matrimony.',
+    },
+    {
+      question: 'Is there a wedding registry?',
+      answer:
+        'Your presence is our greatest gift. For those who wish to honor us further, our registry is available on our website.',
+    },
+    {
+      question: 'Can I attend both celebrations?',
+      answer:
+        'Absolutely! We would be delighted to have you join us for both celebrations as we commemorate these special moments together.',
+    },
+    {
+      question: 'Will transportation be provided?',
+      answer:
+        'Please refer to our Travel & Accommodations section for transportation details and recommendations.',
+    },
+    {
+      question: 'Will the ceremony and reception take place at the same location?',
+      answer: 'Please refer to the Wedding Details section for ceremony and reception locations.',
+    },
+    {
+      question: 'Will dinner be served?',
+      answer: 'Yes, we look forward to sharing a lovely dining experience with our guests.',
+    },
+    {
+      question: 'Can dietary restrictions be accommodated?',
+      answer:
+        'Please let us know of any dietary restrictions or allergies when submitting your RSVP.',
+    },
+    {
+      question: 'Who should I contact with additional questions?',
+      answer:
+        'Should you have any further questions, please feel free to reach out to us. We would be delighted to assist.',
+    },
+  ] satisfies Faq[],
 
   schedule: [
     {
@@ -178,13 +363,6 @@ export const WEDDING = {
     },
   ] satisfies ScheduleItem[],
 
-  dressCode: {
-    title: 'Formal',
-    description:
-      'Gentlemen: suit or formal guayabera. Ladies: long or cocktail dress. Please avoid white, which is reserved for the bride.',
-    palette: ['#5c6b4a', '#c8b89a', '#e9e1d3', '#8a6f52', '#2f2f2f'],
-  },
-
   gifts: {
     message:
       'Your presence is the greatest gift. If you would like to give us something, a contribution toward our honeymoon and our new home would be greatly appreciated.',
@@ -196,13 +374,16 @@ export const WEDDING = {
   },
 
   /**
-   * Canción de fondo. Suena con el reproductor oficial de Spotify: quien tenga
-   * sesión de Spotify abierta en el navegador la escucha completa; los demás
-   * escuchan la vista previa de 30 segundos que da Spotify.
+   * Canción de fondo: suena completa con el reproductor de YouTube.
+   * Si YouTube no deja reproducirla dentro de la página (algunos videos tienen
+   * la inserción desactivada), se usa el reproductor de Spotify como respaldo.
    */
   music: {
+    title: 'Just the Two of Us',
+    artist: 'Grover Washington, Jr. feat. Bill Withers',
+    /** Video "Official Audio": https://www.youtube.com/watch?v=6IO74QV6wHY */
+    youtubeVideoId: '6IO74QV6wHY',
     spotifyTrackId: '2tH28YyKYOldxhuBHoI79M',
-    title: 'Our song',
   },
 
   rsvp: {

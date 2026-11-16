@@ -21,8 +21,9 @@
   </div>
 
   <div class="story__text" appReveal>
-    <span class="eyebrow">How it all began</span>
+    <span class="eyebrow">{{ story.subtitle }}</span>
     <h2 class="section-title">{{ story.title }}</h2>
+    <blockquote class="story__quote">“{{ story.quote }}”</blockquote>
     <hr class="divider" />
     @for (p of story.paragraphs; track $index) {
       <p>{{ p }}</p>

@@ -12,6 +12,9 @@ import { Gifts } from './sections/gifts/gifts';
 import { Rsvp } from './sections/rsvp/rsvp';
 import { Footer } from './sections/footer/footer';
 import { Music } from './sections/music/music';
+import { Weddings } from './sections/weddings/weddings';
+import { Travel } from './sections/travel/travel';
+import { Faq } from './sections/faq/faq';
 
 @Component({
   selector: 'app-root',
@@ -29,6 +32,9 @@ import { Music } from './sections/music/music';
     Rsvp,
     Footer,
     Music,
+    Weddings,
+    Travel,
+    Faq,
   ],
   templateUrl: './app.html',
 })

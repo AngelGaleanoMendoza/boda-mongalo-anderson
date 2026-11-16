@@ -1,0 +1,17 @@
+<section id="faq" class="section section--sand">
+  <div class="container">
+    <header class="section-head" appReveal>
+      <span class="eyebrow">Everything you need to know</span>
+      <h2 class="section-title">Frequently Asked Questions</h2>
+    </header>
+
+    <div class="faqs" appReveal>
+      @for (faq of faqs; track faq.question) {
+        <details class="faq">
+          <summary>{{ faq.question }}</summary>
+          <p>{{ faq.answer }}</p>
+        </details>
+      }
+    </div>
+  </div>
+</section>

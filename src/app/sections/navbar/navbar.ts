@@ -14,10 +14,13 @@ export class Navbar {
   protected readonly links = [
     { href: '#home', label: 'Home' },
     { href: '#story', label: 'Our Story' },
+    { href: '#weddings', label: 'Weddings' },
     { href: '#schedule', label: 'Schedule' },
-    { href: '#location', label: 'Location' },
+    { href: '#details', label: 'Details' },
+    { href: '#travel', label: 'Travel' },
     { href: '#gallery', label: 'Gallery' },
-    { href: '#gifts', label: 'Gifts' },
+    { href: '#faq', label: 'FAQ' },
+    { href: '#gifts', label: 'Registry' },
   ];
 
   @HostListener('window:scroll')

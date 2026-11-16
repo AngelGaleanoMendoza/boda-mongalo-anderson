@@ -103,3 +103,13 @@
   text-align: center;
   color: #4a453d;
 }
+
+.story__quote {
+  margin: 22px auto 0;
+  max-width: 560px;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: clamp(20px, 2.4vw, 24px);
+  line-height: 1.45;
+  color: var(--olive);
+}
