@@ -1,6 +1,7 @@
-import { Component, computed, effect, signal } from '@angular/core';
+import { Component, computed, effect, inject, signal } from '@angular/core';
 import { WEDDING } from '../../wedding.config';
 import { RevealDirective } from '../../shared/reveal.directive';
+import { I18n } from '../../i18n/i18n';
 
 @Component({
   selector: 'app-gallery',
@@ -12,6 +13,7 @@ import { RevealDirective } from '../../shared/reveal.directive';
   },
 })
 export class Gallery {
+  protected readonly t = inject(I18n).t;
   protected readonly photos = WEDDING.gallery;
   /** Index of the photo open in the viewer, or null when closed. */
   protected readonly current = signal<number | null>(null);

@@ -132,3 +132,15 @@ npx ng build --base-href ./         # versión para publicar -> dist/boda-anders
   completa con el reproductor de YouTube, video 6IO74QV6wHY.
   - El reproductor se ve en el panel ♫, porque YouTube pide que sea visible.
   - Si YouTube no permite insertar ese video, se usa Spotify de respaldo.
+
+## Botón de idioma EN | ES (16 nov)
+
+- El botón **EN | ES** está en el menú y en la portada de entrada. Cambia toda la página
+  al instante y el navegador recuerda la elección. Por defecto la página abre en inglés.
+- Archivos:
+  - `src/app/i18n/ui.ts`: textos fijos (botones, títulos, avisos) en los dos idiomas.
+  - `src/app/i18n/content-es.ts`: la versión en español de los textos de
+    `wedding.config.ts`. **Si cambias un texto en inglés, cambia también su traducción.**
+  - `src/app/i18n/i18n.ts`: el servicio que guarda el idioma elegido.
+- En español la etiqueta de cada boda dice "Boda US" / "Boda NIC".
+- La animación también tiene versión en español: `public/video/intro-*-es.mp4`.

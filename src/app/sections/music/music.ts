@@ -9,6 +9,8 @@ import {
   viewChild,
 } from '@angular/core';
 import { WEDDING } from '../../wedding.config';
+import { LangToggle } from '../../shared/lang-toggle';
+import { I18n } from '../../i18n/i18n';
 
 /* ---------- Lo mínimo que usamos de las APIs de YouTube y Spotify ---------- */
 interface YtPlayer {
@@ -83,11 +85,14 @@ function loadScript(src: string): void {
  */
 @Component({
   selector: 'app-music',
+  imports: [LangToggle],
   templateUrl: './music.html',
   styleUrl: './music.css',
 })
 export class Music {
-  protected readonly w = WEDDING;
+  private readonly i18n = inject(I18n);
+  protected readonly w = this.i18n.w;
+  protected readonly t = this.i18n.t;
   protected readonly introBackground =
     'linear-gradient(rgba(36, 43, 30, 0.72), rgba(36, 43, 30, 0.86)), url(images/hero-movil.jpg)';
 
@@ -134,7 +139,8 @@ export class Music {
       return;
     }
     const portrait = window.innerHeight > window.innerWidth;
-    this.videoSrc.set(portrait ? 'video/intro-portrait.mp4' : 'video/intro-landscape.mp4');
+    const suffix = this.i18n.lang() === 'es' ? '-es' : '';
+    this.videoSrc.set(`video/intro-${portrait ? 'portrait' : 'landscape'}${suffix}.mp4`);
     this.stage.set('film');
   }
 

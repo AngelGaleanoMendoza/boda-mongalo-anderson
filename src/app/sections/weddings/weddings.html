@@ -1,21 +1,21 @@
 <section id="weddings" class="section">
   <div class="container">
     <header class="section-head" appReveal>
-      <span class="eyebrow">Why two weddings?</span>
-      <h2 class="section-title">{{ t.title }}</h2>
-      <blockquote class="quote">“{{ t.quote }}”</blockquote>
+      <span class="eyebrow">{{ ui().whyTwo }}</span>
+      <h2 class="section-title">{{ t().title }}</h2>
+      <blockquote class="quote">“{{ t().quote }}”</blockquote>
     </header>
 
     <div class="lead-in" appReveal>
-      @for (p of t.intro; track $index) {
+      @for (p of t().intro; track $index) {
         <p>{{ p }}</p>
       }
     </div>
 
     <div class="pair">
-      @for (c of t.celebrations; track c.code) {
+      @for (c of t().celebrations; track c.code) {
         <article class="celebration" appReveal>
-          <h3 class="celebration__label"><b class="code">{{ c.code }}</b> Wedding</h3>
+          <h3 class="celebration__label"><app-wedding-label [code]="c.code" /></h3>
           <p class="celebration__place">{{ c.place }}</p>
           <p class="celebration__text">{{ c.text }}</p>
         </article>
@@ -24,7 +24,7 @@
 
     <div class="closing" appReveal>
       <hr class="divider" />
-      @for (p of t.closing; track $index) {
+      @for (p of t().closing; track $index) {
         <p>{{ p }}</p>
       }
     </div>

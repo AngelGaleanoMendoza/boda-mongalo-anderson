@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
-import { WEDDING } from '../../wedding.config';
+import { Component, computed, inject } from '@angular/core';
 import { RevealDirective } from '../../shared/reveal.directive';
+import { I18n } from '../../i18n/i18n';
 
 @Component({
   selector: 'app-faq',
@@ -9,5 +9,7 @@ import { RevealDirective } from '../../shared/reveal.directive';
   styleUrl: './faq.css',
 })
 export class Faq {
-  protected readonly faqs = WEDDING.faqs;
+  private readonly i18n = inject(I18n);
+  protected readonly t = this.i18n.t;
+  protected readonly faqs = computed(() => this.i18n.w().faqs);
 }

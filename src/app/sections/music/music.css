@@ -19,6 +19,12 @@
   animation: intro-out 0.7s var(--ease) both;
 }
 
+.intro__lang {
+  position: absolute;
+  top: calc(16px + env(safe-area-inset-top, 0px));
+  right: calc(16px + env(safe-area-inset-right, 0px));
+}
+
 .intro__card {
   display: flex;
   flex-direction: column;

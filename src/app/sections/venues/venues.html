@@ -1,26 +1,26 @@
 <section id="details" class="section section--sand">
   <div class="container">
     <header class="section-head" appReveal>
-      <span class="eyebrow">Where &amp; what to wear</span>
-      <h2 class="section-title">Wedding Details</h2>
+      <span class="eyebrow">{{ t().whereWear }}</span>
+      <h2 class="section-title">{{ t().detailsTitle }}</h2>
     </header>
 
     <div class="venues">
-      @for (d of details; track d.label) {
+      @for (d of details(); track d.label) {
         <article class="venue" appReveal>
-          <h3 class="venue__label"><b class="code">{{ d.label.split(' ')[0] }}</b> Wedding</h3>
+          <h3 class="venue__label"><app-wedding-label [code]="d.label.split(' ')[0]" /></h3>
           <p class="venue__place">{{ d.place }}</p>
 
           <app-icon name="pin" class="venue__icon" />
-          <span class="eyebrow">Wedding venue</span>
+          <span class="eyebrow">{{ t().venueLabel }}</span>
           <p class="venue__name">{{ d.venue }}</p>
           <p class="venue__address">{{ d.address }}</p>
           @if (d.mapsUrl) {
-            <a class="btn btn--outline" [href]="d.mapsUrl" target="_blank" rel="noopener">View on map</a>
+            <a class="btn btn--outline" [href]="d.mapsUrl" target="_blank" rel="noopener">{{ t().viewMap }}</a>
           }
 
           <hr class="divider" />
-          <span class="eyebrow">Dress code</span>
+          <span class="eyebrow">{{ t().dressCode }}</span>
           <p class="venue__dress">{{ d.dressCode.title }}</p>
           <p class="venue__address">{{ d.dressCode.description }}</p>
         </article>

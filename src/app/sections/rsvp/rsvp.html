@@ -1,66 +1,66 @@
 <section id="rsvp" class="section section--sand">
   <div class="container">
     <header class="section-head" appReveal>
-      <span class="eyebrow">Kindly reply by {{ deadline }}</span>
-      <h2 class="section-title">Will you join us?</h2>
+      <span class="eyebrow">{{ t().replyBy }} {{ deadline() }}</span>
+      <h2 class="section-title">{{ t().rsvpTitle }}</h2>
     </header>
 
     <div class="card" appReveal>
       @if (status() === 'sent') {
         <div class="done" role="status">
-          <h3>Thank you!</h3>
+          <h3>{{ t().thanks }}</h3>
           <p>
-            {{ attending ? 'We are so happy you will be there.' : 'We will miss you. Thank you for letting us know!' }}
+            {{ attending ? t().happy : t().missYou }}
           </p>
-          <button type="button" class="btn btn--outline" (click)="reset()">Send another response</button>
+          <button type="button" class="btn btn--outline" (click)="reset()">{{ t().sendAnother }}</button>
         </div>
       } @else if (status() === 'manual') {
         <div class="done" role="status">
-          <h3>Almost done!</h3>
-          <p>Please email your response to <strong class="email">{{ email }}</strong>.</p>
+          <h3>{{ t().almost }}</h3>
+          <p>{{ t().emailTo }} <strong class="email">{{ email }}</strong>.</p>
           <pre class="summary">{{ summary() }}</pre>
           <div class="actions">
             <button type="button" class="btn" (click)="copy()">
-              {{ copied() ? 'Copied' : 'Copy response' }}
+              {{ copied() ? t().copied : t().copy }}
             </button>
-            <a class="btn btn--outline" [href]="mailto()">Open my email</a>
+            <a class="btn btn--outline" [href]="mailto()">{{ t().openEmail }}</a>
           </div>
-          <button type="button" class="link" (click)="reset()">Back to the form</button>
+          <button type="button" class="link" (click)="reset()">{{ t().backToForm }}</button>
         </div>
       } @else {
         <form [formGroup]="form" (ngSubmit)="submit()" novalidate>
           <div class="field">
-            <label for="name">Full name</label>
+            <label for="name">{{ t().fullName }}</label>
             <input id="name" formControlName="name" autocomplete="name" [attr.aria-invalid]="invalid('name')" />
             @if (invalid('name')) {
-              <span class="error">Please enter your name.</span>
+              <span class="error">{{ t().nameError }}</span>
             }
           </div>
 
           <div class="field">
-            <label for="contact">Email or phone</label>
+            <label for="contact">{{ t().contact }}</label>
             <input id="contact" formControlName="contact" autocomplete="email" [attr.aria-invalid]="invalid('contact')" />
             @if (invalid('contact')) {
-              <span class="error">Please leave a way to reach you.</span>
+              <span class="error">{{ t().contactError }}</span>
             }
           </div>
 
           <fieldset class="field choice">
-            <legend>Will you attend?</legend>
+            <legend>{{ t().willAttend }}</legend>
             <label class="pill">
               <input type="radio" formControlName="attending" value="yes" />
-              <span>Joyfully accepts</span>
+              <span>{{ t().accepts }}</span>
             </label>
             <label class="pill">
               <input type="radio" formControlName="attending" value="no" />
-              <span>Regretfully declines</span>
+              <span>{{ t().declines }}</span>
             </label>
           </fieldset>
 
           @if (attending) {
             <div class="row">
               <div class="field">
-                <label for="guests">Number of guests</label>
+                <label for="guests">{{ t().guests }}</label>
                 <select id="guests" formControlName="guests">
                   @for (n of guestOptions; track n) {
                     <option [ngValue]="n">{{ n }}</option>
@@ -68,23 +68,23 @@
                 </select>
               </div>
               <div class="field">
-                <label for="diet">Allergies or dietary needs</label>
-                <input id="diet" formControlName="diet" placeholder="Vegetarian, gluten-free…" />
+                <label for="diet">{{ t().diet }}</label>
+                <input id="diet" formControlName="diet" [placeholder]="t().dietPlaceholder" />
               </div>
             </div>
           }
 
           <div class="field">
-            <label for="message">A message for the couple (optional)</label>
+            <label for="message">{{ t().message }}</label>
             <textarea id="message" formControlName="message" rows="3"></textarea>
           </div>
 
           @if (status() === 'error') {
-            <p class="error" role="alert">We couldn't send your response. Please try again.</p>
+            <p class="error" role="alert">{{ t().sendError }}</p>
           }
 
           <button type="submit" class="btn submit" [disabled]="status() === 'sending'">
-            {{ status() === 'sending' ? 'Sending…' : 'Send RSVP' }}
+            {{ status() === 'sending' ? t().sending : t().send }}
           </button>
         </form>
       }

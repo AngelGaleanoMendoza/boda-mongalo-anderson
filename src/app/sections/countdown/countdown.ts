@@ -1,5 +1,7 @@
 import { Component, DestroyRef, computed, inject, signal } from '@angular/core';
 import { WEDDING_DATES } from '../../shared/format';
+import { WeddingLabel } from '../../shared/wedding-label';
+import { I18n } from '../../i18n/i18n';
 
 const SECOND = 1000;
 const MINUTE = 60 * SECOND;
@@ -8,11 +10,13 @@ const DAY = 24 * HOUR;
 
 @Component({
   selector: 'app-countdown',
+  imports: [WeddingLabel],
   templateUrl: './countdown.html',
   styleUrl: './countdown.css',
 })
 export class Countdown {
   private readonly now = signal(Date.now());
+  protected readonly t = inject(I18n).t;
 
   /** Una cuenta regresiva por boda (EE. UU. y Nicaragua). */
   protected readonly events = computed(() =>
@@ -25,11 +29,11 @@ export class Countdown {
         married: diff <= 0,
         daysMarried: Math.floor(-diff / DAY),
         units: [
-          { value: Math.floor(ms / DAY), label: 'Days' },
-          { value: Math.floor((ms % DAY) / HOUR), label: 'Hours' },
-          { value: Math.floor((ms % HOUR) / MINUTE), label: 'Minutes' },
-          { value: Math.floor((ms % MINUTE) / SECOND), label: 'Seconds' },
-        ],
+          Math.floor(ms / DAY),
+          Math.floor((ms % DAY) / HOUR),
+          Math.floor((ms % HOUR) / MINUTE),
+          Math.floor((ms % MINUTE) / SECOND),
+        ].map((value, i) => ({ value, label: this.t().units[i] })),
       };
     }),
   );

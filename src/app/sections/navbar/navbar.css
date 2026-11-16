@@ -176,3 +176,24 @@
 .nav__inner {
   position: relative;
 }
+
+/* Botón EN | ES: al final del menú en computadora, junto al botón ☰ en celular. */
+.menu {
+  margin-left: auto;
+}
+
+.nav__lang {
+  order: 3;
+  margin-left: clamp(14px, 2vw, 26px);
+}
+
+.burger {
+  order: 4;
+}
+
+@media (max-width: 1200px) {
+  .nav__lang {
+    margin-left: auto;
+    margin-right: 6px;
+  }
+}

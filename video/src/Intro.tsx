@@ -20,7 +20,23 @@ const NIGHT_DEEP = '#2c3525';
 const CREAM = '#ece4d2';
 const GOLD = '#c9a76a';
 
-const QUOTE = 'Not even distance could separate what God had destined to unite.';
+export interface IntroProps extends Record<string, unknown> {
+  quote: string;
+  texasSub: string;
+  managuaSub: string;
+}
+
+export const INTRO_EN: IntroProps = {
+  quote: 'Not even distance could separate what God had destined to unite.',
+  texasSub: 'United States',
+  managuaSub: 'Nicaragua',
+};
+
+export const INTRO_ES: IntroProps = {
+  quote: 'Ni siquiera la distancia pudo separar lo que Dios había destinado a unir.',
+  texasSub: 'Estados Unidos',
+  managuaSub: 'Nicaragua',
+};
 
 const clamp = { extrapolateLeft: 'clamp', extrapolateRight: 'clamp' } as const;
 const ease = Easing.bezier(0.22, 0.61, 0.36, 1);
@@ -30,7 +46,7 @@ function bezier(t: number, p0: number, p1: number, p2: number): number {
   return (1 - t) * (1 - t) * p0 + 2 * (1 - t) * t * p1 + t * t * p2;
 }
 
-export const Intro: React.FC = () => {
+export const Intro: React.FC<IntroProps> = ({ quote, texasSub, managuaSub }) => {
   const frame = useCurrentFrame();
   const { width, height, fps } = useVideoConfig();
   const portrait = height > width;
@@ -60,7 +76,7 @@ export const Intro: React.FC = () => {
   const ampScale = interpolate(frame, [150, 172], [0.7, 1], { ...clamp, easing: ease });
 
   // ---------- Escena 3: la frase, palabra por palabra ----------
-  const words = QUOTE.split(' ');
+  const words = quote.split(' ');
   const quoteStart = 168;
   const perWord = 3.2;
 
@@ -114,8 +130,8 @@ export const Intro: React.FC = () => {
           />
         </svg>
         {[
-          { x: x1, label: 'Texas', sub: 'United States' },
-          { x: x2, label: 'Managua', sub: 'Nicaragua' },
+          { x: x1, label: 'Texas', sub: texasSub },
+          { x: x2, label: 'Managua', sub: managuaSub },
         ].map((p) => (
           <div
             key={p.label}

@@ -1,7 +1,7 @@
-import { Component, inject, signal } from '@angular/core';
+import { Component, computed, inject, signal } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { WEDDING } from '../../wedding.config';
-import { longDate } from '../../shared/format';
+import { I18n } from '../../i18n/i18n';
 import { RevealDirective } from '../../shared/reveal.directive';
 
 type Status = 'idle' | 'sending' | 'sent' | 'manual' | 'error';
@@ -15,7 +15,9 @@ type Status = 'idle' | 'sending' | 'sent' | 'manual' | 'error';
 export class Rsvp {
   private readonly fb = inject(FormBuilder);
 
-  protected readonly deadline = longDate(WEDDING.rsvpDeadline);
+  private readonly i18n = inject(I18n);
+  protected readonly t = this.i18n.t;
+  protected readonly deadline = computed(() => this.i18n.longDate(WEDDING.rsvpDeadline));
   protected readonly guestOptions = Array.from({ length: WEDDING.rsvp.maxGuests }, (_, i) => i + 1);
   protected readonly status = signal<Status>('idle');
   protected readonly email = WEDDING.rsvp.email;

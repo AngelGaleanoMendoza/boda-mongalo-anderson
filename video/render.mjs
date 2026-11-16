@@ -14,6 +14,8 @@ const serveUrl = await bundle({ entryPoint: path.join(here, 'src', 'index.ts') }
 for (const [id, file] of [
   ['IntroLandscape', 'intro-landscape.mp4'],
   ['IntroPortrait', 'intro-portrait.mp4'],
+  ['IntroLandscapeEs', 'intro-landscape-es.mp4'],
+  ['IntroPortraitEs', 'intro-portrait-es.mp4'],
 ]) {
   const composition = await selectComposition({ serveUrl, id, browserExecutable });
   await renderMedia({

@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, computed, inject } from '@angular/core';
 import { WEDDING } from '../../wedding.config';
 import { RevealDirective } from '../../shared/reveal.directive';
+import { I18n } from '../../i18n/i18n';
 
 interface Slide {
   src: string;
@@ -14,7 +15,9 @@ interface Slide {
   styleUrl: './story.css',
 })
 export class Story {
-  protected readonly story = WEDDING.story;
+  private readonly i18n = inject(I18n);
+  protected readonly t = this.i18n.t;
+  protected readonly story = computed(() => this.i18n.w().story);
   protected readonly initials = WEDDING.initials;
 
   private readonly slides: Slide[] = WEDDING.story.carousel.map((p) => ({

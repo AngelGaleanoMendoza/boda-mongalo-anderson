@@ -249,3 +249,9 @@ html.is-locked,
 html.is-locked body {
   overflow: hidden;
 }
+
+/* "Boda US": la sigla va después de la palabra. */
+.code--after {
+  margin-right: 0;
+  margin-left: 0.1em;
+}
