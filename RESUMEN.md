@@ -154,3 +154,17 @@ npx ng build --base-href ./         # versión para publicar -> dist/boda-anders
   - El botón flotante de abajo a la derecha la pausa y la reanuda.
   - Si el navegador bloquea el arranque, el botón parpadea y aparece "Tap ▶ to play our song".
 - Para cambiar la canción, reemplaza ese archivo o cambia `music.src` en `wedding.config.ts`.
+
+## Itinerario de Nicaragua y elección de boda en el RSVP (16 nov)
+
+- El itinerario muestra "Our Nicaragua Celebration":
+  - 2:00 PM, llegada a la iglesia.
+  - 2:30 PM, ceremonia.
+  - 5:00 PM, recepción.
+  - 8:00 PM, cena.
+  - 11:00 PM, hora loca.
+  - 2:00 AM, despedida.
+  Debajo dice que el de Texas se anunciará pronto. Está en `schedule`, `scheduleTitle` y
+  `scheduleNote` de `wedding.config.ts`, con su traducción en `content-es.ts`.
+- RSVP: si el invitado marca que asistirá, elige a qué celebración va: Texas, Nicaragua o
+  las dos. Es obligatorio y se envía en el campo `wedding`.

@@ -25,7 +25,7 @@ export interface ScheduleItem {
   title: string;
   place: string;
   description: string;
-  icon: 'rings' | 'glass' | 'dinner' | 'music' | 'moon';
+  icon: 'pin' | 'rings' | 'glass' | 'dinner' | 'music' | 'moon';
 }
 
 /** Detalles de cada boda: lugar y código de vestimenta. */
@@ -318,47 +318,52 @@ export const WEDDING = {
     },
   ] satisfies Faq[],
 
+  /** Itinerario (por ahora solo el de Nicaragua). */
+  scheduleTitle: 'Our Nicaragua Celebration',
+  scheduleNote: 'The schedule for our Texas celebration will be announced soon.',
   schedule: [
     {
-      time: '3:30 PM',
-      title: 'Guest arrival',
-      place: 'Ceremony',
-      description: 'Please arrive early so you can find your seat without rushing.',
-      icon: 'rings',
+      time: '2:00 PM',
+      title: 'Guest Arrival',
+      place: 'Church',
+      description: 'Guests are kindly invited to arrive at the church and be seated.',
+      icon: 'pin',
     },
     {
-      time: '4:00 PM',
-      title: 'Ceremony',
-      place: 'Ceremony',
-      description: 'The most special moment: "I do."',
+      time: '2:30 PM',
+      title: 'Wedding Ceremony',
+      place: 'Church',
+      description: 'The celebration of the Sacrament of Holy Matrimony begins.',
       icon: 'rings',
     },
     {
       time: '5:00 PM',
-      title: 'Cocktail hour',
-      place: 'Reception',
-      description: 'Drinks, bites and photos as the sun goes down.',
+      title: 'Reception Begins',
+      place: 'Venue',
+      description: 'Join us at the venue for an enchanting evening of love and celebration.',
       icon: 'glass',
     },
     {
-      time: '6:30 PM',
-      title: 'Dinner',
-      place: 'Reception',
-      description: 'Toasts, a few words from our loved ones and dinner together.',
+      time: '8:00 PM',
+      title: 'Wedding Dinner',
+      place: 'Venue',
+      description: 'An elegant dining experience shared with our loved ones.',
       icon: 'dinner',
     },
     {
-      time: '8:00 PM',
-      title: 'Let\'s dance!',
-      place: 'Reception',
-      description: 'Our first dance, then the party goes on as long as you can keep up.',
+      time: '11:00 PM',
+      title: 'Hora Loca',
+      place: 'Venue',
+      description:
+        'Let the festivities begin! A lively celebration filled with music, dancing, and unforgettable moments.',
       icon: 'music',
     },
     {
-      time: '12:00 AM',
+      time: '2:00 AM',
       title: 'Farewell',
-      place: 'Reception',
-      description: 'Thank you for sharing this special day with us.',
+      place: 'Venue',
+      description:
+        'As our magical evening comes to an end, we thank you for being part of our special day.',
       icon: 'moon',
     },
   ] satisfies ScheduleItem[],

@@ -106,3 +106,13 @@
     height: 26px;
   }
 }
+
+.note {
+  margin: 8px auto 0;
+  max-width: 520px;
+  text-align: center;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 19px;
+  color: var(--muted);
+}

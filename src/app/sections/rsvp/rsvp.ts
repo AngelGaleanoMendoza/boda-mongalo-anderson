@@ -3,12 +3,14 @@ import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { WEDDING } from '../../wedding.config';
 import { I18n } from '../../i18n/i18n';
 import { RevealDirective } from '../../shared/reveal.directive';
+import { WeddingLabel } from '../../shared/wedding-label';
+import { WEDDING_DATES } from '../../shared/format';
 
 type Status = 'idle' | 'sending' | 'sent' | 'manual' | 'error';
 
 @Component({
   selector: 'app-rsvp',
-  imports: [ReactiveFormsModule, RevealDirective],
+  imports: [ReactiveFormsModule, RevealDirective, WeddingLabel],
   templateUrl: './rsvp.html',
   styleUrl: './rsvp.css',
 })
@@ -25,11 +27,22 @@ export class Rsvp {
   protected readonly summary = signal('');
   protected readonly mailto = signal('');
   protected readonly copied = signal(false);
+  /** Se marcó "asistiré" pero no se eligió a qué boda. */
+  protected readonly weddingMissing = signal(false);
+
+  /** Las dos bodas para elegir en el formulario (la opción "las dos" va aparte). */
+  protected readonly weddingOptions = WEDDING_DATES.map((w) => ({
+    value: w.code === 'US' ? 'texas' : 'nicaragua',
+    code: w.code,
+    place: w.place,
+    date: w.dateText,
+  }));
 
   protected readonly form = this.fb.nonNullable.group({
     name: ['', [Validators.required, Validators.minLength(3)]],
     contact: ['', Validators.required],
     attending: ['yes' as 'yes' | 'no', Validators.required],
+    wedding: ['' as '' | 'texas' | 'nicaragua' | 'both'],
     guests: [1],
     diet: [''],
     message: [''],
@@ -45,7 +58,9 @@ export class Rsvp {
   }
 
   async submit(): Promise<void> {
-    if (this.form.invalid) {
+    const missing = this.attending && !this.form.controls.wedding.value;
+    this.weddingMissing.set(missing);
+    if (this.form.invalid || missing) {
       this.form.markAllAsTouched();
       return;
     }
@@ -55,6 +70,10 @@ export class Rsvp {
       name: data.name,
       contact: data.contact,
       attending: data.attending === 'yes' ? 'Yes' : 'No',
+      wedding:
+        data.attending === 'yes'
+          ? { texas: 'Texas', nicaragua: 'Nicaragua', both: 'Both' }[data.wedding || 'both']
+          : '-',
       guests: data.attending === 'yes' ? data.guests : 0,
       dietary: data.diet,
       message: data.message,
@@ -101,6 +120,7 @@ export class Rsvp {
   reset(): void {
     this.copied.set(false);
     this.form.reset();
+    this.weddingMissing.set(false);
     this.status.set('idle');
   }
 }

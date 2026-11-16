@@ -177,3 +177,17 @@ textarea {
   text-decoration: underline;
   cursor: pointer;
 }
+
+/* Opciones de boda: etiqueta "US Wedding" + lugar y fecha debajo. */
+.pill small {
+  display: block;
+  margin-top: 2px;
+  font-family: var(--font-sans);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  opacity: 0.75;
+}
+
+.choice .error {
+  flex-basis: 100%;
+}

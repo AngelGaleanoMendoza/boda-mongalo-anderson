@@ -27,6 +27,8 @@ type TextKeys =
   | 'details'
   | 'travel'
   | 'faqs'
+  | 'scheduleTitle'
+  | 'scheduleNote'
   | 'schedule'
   | 'gifts';
 

@@ -58,6 +58,26 @@
           </fieldset>
 
           @if (attending) {
+            <fieldset class="field choice">
+              <legend>{{ t().whichWedding }}</legend>
+              @for (opt of weddingOptions; track opt.value) {
+                <label class="pill">
+                  <input type="radio" formControlName="wedding" [value]="opt.value" />
+                  <span>
+                    <app-wedding-label [code]="opt.code" />
+                    <small>{{ opt.place }} · {{ opt.date }}</small>
+                  </span>
+                </label>
+              }
+              <label class="pill">
+                <input type="radio" formControlName="wedding" value="both" />
+                <span>{{ t().both }}</span>
+              </label>
+              @if (weddingMissing()) {
+                <span class="error">{{ t().weddingError }}</span>
+              }
+            </fieldset>
+
             <div class="row">
               <div class="field">
                 <label for="guests">{{ t().guests }}</label>
