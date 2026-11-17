@@ -16,15 +16,20 @@ const DAY = 24 * HOUR;
 })
 export class Countdown {
   private readonly now = signal(Date.now());
-  protected readonly t = inject(I18n).t;
+  private readonly i18n = inject(I18n);
+  protected readonly t = this.i18n.t;
 
   /** Una cuenta regresiva por boda (EE. UU. y Nicaragua). */
   protected readonly events = computed(() =>
     WEDDING_DATES.map((wedding) => {
       const diff = wedding.date.getTime() - this.now();
       const ms = Math.max(diff, 0);
+      const file = wedding.calendar + (this.i18n.lang() === 'es' ? '-es' : '');
       return {
         ...wedding,
+        /** Evento con avisos (lo genera `npm run calendar`). */
+        ics: `calendar/${file}.ics`,
+        qr: `calendar/qr-${file}.svg`,
         /** true once the wedding day has passed. */
         married: diff <= 0,
         daysMarried: Math.floor(-diff / DAY),

@@ -131,3 +131,57 @@
     padding-left: 10px;
   }
 }
+
+/* ===== Agregar al calendario ===== */
+.cal {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 16px 20px;
+  margin-top: 22px;
+}
+
+.cal__btn svg {
+  width: 16px;
+  height: 16px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.5;
+}
+
+.cal__qr {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0;
+}
+
+.cal__qr img {
+  width: 72px;
+  height: 72px;
+  padding: 4px;
+  background: #fff;
+  border: 1px solid var(--line);
+}
+
+.cal__qr figcaption {
+  max-width: 110px;
+  font-size: 11px;
+  line-height: 1.4;
+  color: var(--muted);
+  text-align: left;
+}
+
+/* En el celular el botón ya abre el calendario: el QR sobra. */
+@media (max-width: 899px) {
+  .cal__qr {
+    display: none;
+  }
+}
+
+.cal__note {
+  margin: -16px 0 24px;
+  font-size: 12px;
+  color: var(--muted);
+}

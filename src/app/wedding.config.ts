@@ -18,6 +18,8 @@ export interface WeddingEvent {
   timeZone: string;
   /** Cómo se escribe la fecha: 'us' = MM/DD/AAAA, 'nic' = DD/MM/AAAA. */
   dateStyle: 'us' | 'nic';
+  /** Nombre del archivo de calendario en public/calendar/ (lo genera `npm run calendar`). */
+  calendar: string;
 }
 
 export interface ScheduleItem {
@@ -76,7 +78,7 @@ export const WEDDING = {
 
   /**
    * Las dos bodas, en orden. Cada una tiene su propia cuenta regresiva.
-   * La hora (4:00 p. m.) está POR CONFIRMAR en las dos.
+   * La hora de Texas (4:00 p. m.) está POR CONFIRMAR.
    */
   weddings: [
     {
@@ -86,14 +88,17 @@ export const WEDDING = {
       date: new Date('2027-02-27T16:00:00-06:00'),
       timeZone: 'America/Chicago',
       dateStyle: 'us',
+      calendar: 'texas',
     },
     {
       code: 'NIC',
       label: 'NIC Wedding',
       place: 'Nicaragua',
-      date: new Date('2027-11-27T16:00:00-06:00'),
+      /** Ceremonia a las 2:30 PM (itinerario de Melanie). */
+      date: new Date('2027-11-27T14:30:00-06:00'),
       timeZone: 'America/Managua',
       dateStyle: 'nic',
+      calendar: 'nicaragua',
     },
   ] satisfies WeddingEvent[],
 

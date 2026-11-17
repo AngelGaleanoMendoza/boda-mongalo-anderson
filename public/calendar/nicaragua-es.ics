@@ -1,0 +1,60 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Justin & Melanie//Wedding//ES
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:nicaragua-wedding@justin-melanie
+DTSTAMP:20261117T170232Z
+DTSTART:20271127T200000Z
+DTEND:20271128T080000Z
+SUMMARY:Justin & Melanie – Boda NIC (Managua)
+LOCATION:Ángeles – Centro de Eventos\, Balcones de Santo Domingo\, Manag
+ ua\, Nicaragua
+DESCRIPTION:2:00 p. m. Llegada a la iglesia\n2:30 p. m. Ceremonia religiosa
+ \n5:00 p. m. Recepción\n8:00 p. m. Cena\n11:00 p. m. Hora loca\n2:00 a. m
+ . Despedida\nTodos los detalles: https://angelgaleanomendoza.github.io/bod
+ a-mongalo-anderson/
+URL:https://angelgaleanomendoza.github.io/boda-mongalo-anderson/
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:¡Se acerca la boda de Justin y Melanie en Nicaragua!
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:¡Se acerca la boda de Justin y Melanie en Nicaragua!
+TRIGGER:-P6D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:¡Se acerca la boda de Justin y Melanie en Nicaragua!
+TRIGGER:-P5D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:¡Se acerca la boda de Justin y Melanie en Nicaragua!
+TRIGGER:-P4D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:¡Se acerca la boda de Justin y Melanie en Nicaragua!
+TRIGGER:-P3D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:¡Se acerca la boda de Justin y Melanie en Nicaragua!
+TRIGGER:-P2D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:¡Se acerca la boda de Justin y Melanie en Nicaragua!
+TRIGGER:-P1D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:¡Se acerca la boda de Justin y Melanie en Nicaragua!
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+END:VCALENDAR

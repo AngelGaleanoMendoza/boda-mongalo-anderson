@@ -1,0 +1,60 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Justin & Melanie//Wedding//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:nicaragua-wedding@justin-melanie
+DTSTAMP:20261117T170232Z
+DTSTART:20271127T200000Z
+DTEND:20271128T080000Z
+SUMMARY:Justin & Melanie – NIC Wedding (Managua)
+LOCATION:Ángeles – Centro de Eventos\, Balcones de Santo Domingo\, Manag
+ ua\, Nicaragua
+DESCRIPTION:2:00 PM Guest arrival at the church\n2:30 PM Wedding ceremony\n
+ 5:00 PM Reception\n8:00 PM Dinner\n11:00 PM Hora Loca\n2:00 AM Farewell\nA
+ ll the details: https://angelgaleanomendoza.github.io/boda-mongalo-anderso
+ n/
+URL:https://angelgaleanomendoza.github.io/boda-mongalo-anderson/
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Justin & Melanie’s Nicaragua wedding is coming up!
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Justin & Melanie’s Nicaragua wedding is coming up!
+TRIGGER:-P6D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Justin & Melanie’s Nicaragua wedding is coming up!
+TRIGGER:-P5D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Justin & Melanie’s Nicaragua wedding is coming up!
+TRIGGER:-P4D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Justin & Melanie’s Nicaragua wedding is coming up!
+TRIGGER:-P3D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Justin & Melanie’s Nicaragua wedding is coming up!
+TRIGGER:-P2D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Justin & Melanie’s Nicaragua wedding is coming up!
+TRIGGER:-P1D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Justin & Melanie’s Nicaragua wedding is coming up!
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+END:VCALENDAR

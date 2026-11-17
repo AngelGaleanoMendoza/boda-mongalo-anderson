@@ -168,3 +168,18 @@ npx ng build --base-href ./         # versión para publicar -> dist/boda-anders
   `scheduleNote` de `wedding.config.ts`, con su traducción en `content-es.ts`.
 - RSVP: si el invitado marca que asistirá, elige a qué celebración va: Texas, Nicaragua o
   las dos. Es obligatorio y se envía en el campo `wedding`.
+
+## Agregar al calendario + QR (17 nov)
+
+- En la cuenta regresiva, cada boda tiene un botón **"Add to calendar"**. Abre un evento
+  `.ics` con avisos 7 días antes, cada día de esa última semana y 3 horas antes.
+  - En computadora también se ve un QR para escanearlo con el celular.
+  - En español se usan los archivos `-es`.
+- Los archivos están en `public/calendar/`: `texas.ics`, `nicaragua.ics`, sus versiones `-es`
+  y los QR `qr-*.svg` / `qr-*.png`. Los PNG sirven para imprimir en las invitaciones.
+- Se generan con `npm run calendar` (`scripts/calendario.mjs`). Si cambia la fecha, la hora
+  o el lugar, actualízalos en ese script y en `wedding.config.ts` y vuelve a correrlo.
+- La boda de Nicaragua ahora cuenta hasta las 2:30 PM (ceremonia). La hora de Texas
+  (4:00 PM) sigue POR CONFIRMAR.
+- No se hizo pase de Apple Wallet: necesita una cuenta de Apple Developer y no hacía falta
+  para los avisos.
