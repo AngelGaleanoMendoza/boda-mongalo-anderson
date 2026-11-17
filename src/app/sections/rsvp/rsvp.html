@@ -1,0 +1,113 @@
+<section id="rsvp" class="section section--sand">
+  <div class="container">
+    <header class="section-head" appReveal>
+      <span class="eyebrow">{{ t().replyBy }} {{ deadline() }}</span>
+      <h2 class="section-title">{{ t().rsvpTitle }}</h2>
+    </header>
+
+    <div class="card" appReveal>
+      @if (status() === 'sent') {
+        <div class="done" role="status">
+          <h3>{{ t().thanks }}</h3>
+          <p>
+            {{ attending ? t().happy : t().missYou }}
+          </p>
+          <button type="button" class="btn btn--outline" (click)="reset()">{{ t().sendAnother }}</button>
+        </div>
+      } @else if (status() === 'manual') {
+        <div class="done" role="status">
+          <h3>{{ t().almost }}</h3>
+          <p>{{ t().emailTo }} <strong class="email">{{ email }}</strong>.</p>
+          <pre class="summary">{{ summary() }}</pre>
+          <div class="actions">
+            <button type="button" class="btn" (click)="copy()">
+              {{ copied() ? t().copied : t().copy }}
+            </button>
+            <a class="btn btn--outline" [href]="mailto()">{{ t().openEmail }}</a>
+          </div>
+          <button type="button" class="link" (click)="reset()">{{ t().backToForm }}</button>
+        </div>
+      } @else {
+        <form [formGroup]="form" (ngSubmit)="submit()" novalidate>
+          <div class="field">
+            <label for="name">{{ t().fullName }}</label>
+            <input id="name" formControlName="name" autocomplete="name" [attr.aria-invalid]="invalid('name')" />
+            @if (invalid('name')) {
+              <span class="error">{{ t().nameError }}</span>
+            }
+          </div>
+
+          <div class="field">
+            <label for="contact">{{ t().contact }}</label>
+            <input id="contact" formControlName="contact" autocomplete="email" [attr.aria-invalid]="invalid('contact')" />
+            @if (invalid('contact')) {
+              <span class="error">{{ t().contactError }}</span>
+            }
+          </div>
+
+          <fieldset class="field choice">
+            <legend>{{ t().willAttend }}</legend>
+            <label class="pill">
+              <input type="radio" formControlName="attending" value="yes" />
+              <span>{{ t().accepts }}</span>
+            </label>
+            <label class="pill">
+              <input type="radio" formControlName="attending" value="no" />
+              <span>{{ t().declines }}</span>
+            </label>
+          </fieldset>
+
+          @if (attending) {
+            <fieldset class="field choice">
+              <legend>{{ t().whichWedding }}</legend>
+              @for (opt of weddingOptions; track opt.value) {
+                <label class="pill">
+                  <input type="radio" formControlName="wedding" [value]="opt.value" />
+                  <span>
+                    <app-wedding-label [code]="opt.code" />
+                    <small>{{ opt.place }} · {{ opt.date }}</small>
+                  </span>
+                </label>
+              }
+              <label class="pill">
+                <input type="radio" formControlName="wedding" value="both" />
+                <span>{{ t().both }}</span>
+              </label>
+              @if (weddingMissing()) {
+                <span class="error">{{ t().weddingError }}</span>
+              }
+            </fieldset>
+
+            <div class="row">
+              <div class="field">
+                <label for="guests">{{ t().guests }}</label>
+                <select id="guests" formControlName="guests">
+                  @for (n of guestOptions; track n) {
+                    <option [ngValue]="n">{{ n }}</option>
+                  }
+                </select>
+              </div>
+              <div class="field">
+                <label for="diet">{{ t().diet }}</label>
+                <input id="diet" formControlName="diet" [placeholder]="t().dietPlaceholder" />
+              </div>
+            </div>
+          }
+
+          <div class="field">
+            <label for="message">{{ t().message }}</label>
+            <textarea id="message" formControlName="message" rows="3"></textarea>
+          </div>
+
+          @if (status() === 'error') {
+            <p class="error" role="alert">{{ t().sendError }}</p>
+          }
+
+          <button type="submit" class="btn submit" [disabled]="status() === 'sending'">
+            {{ status() === 'sending' ? t().sending : t().send }}
+          </button>
+        </form>
+      }
+    </div>
+  </div>
+</section>

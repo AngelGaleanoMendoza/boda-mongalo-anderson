@@ -1,0 +1,48 @@
+<section id="gallery" class="section section--night">
+  <div class="container">
+    <header class="section-head" appReveal>
+      <span class="eyebrow">{{ t().session }}</span>
+      <h2 class="section-title">{{ t().moments }}</h2>
+    </header>
+
+    <div class="grid">
+      @for (p of photos; track p.src; let i = $index) {
+        <button
+          type="button"
+          class="tile"
+          [class.tile--portrait]="p.orientation === 'portrait'"
+          (click)="open(i)"
+        >
+          <img [src]="p.thumb" [alt]="t().photoAlt + ' ' + (i + 1)" loading="lazy" />
+          <span class="sr-only">{{ t().enlarge }} {{ i + 1 }}</span>
+        </button>
+      }
+    </div>
+  </div>
+</section>
+
+@if (photo(); as p) {
+  <div class="viewer" role="dialog" aria-modal="true" [attr.aria-label]="t().enlarged" (click)="close()">
+    <img class="viewer__img" [src]="p.src" [alt]="t().photoAlt + ' ' + ((current() ?? 0) + 1)" (click)="$event.stopPropagation()" />
+    <button type="button" class="viewer__btn viewer__close" (click)="close()" [attr.aria-label]="t().close">
+      ×
+    </button>
+    <button
+      type="button"
+      class="viewer__btn viewer__prev"
+      (click)="step(-1); $event.stopPropagation()"
+      [attr.aria-label]="t().previous"
+    >
+      ‹
+    </button>
+    <button
+      type="button"
+      class="viewer__btn viewer__next"
+      (click)="step(1); $event.stopPropagation()"
+      [attr.aria-label]="t().next"
+    >
+      ›
+    </button>
+    <span class="viewer__count">{{ (current() ?? 0) + 1 }} / {{ photos.length }}</span>
+  </div>
+}

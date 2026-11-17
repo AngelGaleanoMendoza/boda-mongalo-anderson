@@ -1,0 +1,20 @@
+<section class="welcome">
+  <div class="welcome__text" appReveal>
+    <hr class="divider" />
+    @for (line of w().welcome; track $index) {
+      <p>{{ line }}</p>
+    }
+    <p class="welcome__sign">{{ t().withLove }} {{ w().partnerOne }} &amp; {{ w().partnerTwo }}</p>
+    <hr class="divider" />
+  </div>
+
+  <figure class="welcome__photo" appReveal>
+    <img
+      src="images/hero.jpg"
+      [alt]="t().welcomeAlt"
+      loading="lazy"
+      width="1280"
+      height="852"
+    />
+  </figure>
+</section>

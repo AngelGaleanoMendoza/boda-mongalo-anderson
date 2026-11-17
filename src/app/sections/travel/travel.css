@@ -1,0 +1,88 @@
+.guides {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 380px), 1fr));
+  gap: 24px;
+  align-items: start;
+}
+
+.guide {
+  padding: clamp(28px, 5vw, 48px) clamp(20px, 4vw, 40px);
+  background: var(--ivory);
+  border: 1px solid var(--line);
+  color: #4a453d;
+}
+
+.guide__head {
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.guide__flag {
+  display: block;
+  font-size: 30px;
+  line-height: 1;
+}
+
+.guide__greeting {
+  margin-top: 8px;
+  font-family: var(--font-script);
+  font-size: clamp(38px, 5vw, 48px);
+  line-height: 1.2;
+  color: var(--olive);
+}
+
+.guide__tagline {
+  margin: 2px 0 0;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+.guide__title {
+  margin: 28px 0 8px;
+  padding-top: 20px;
+  border-top: 1px solid var(--line);
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 500;
+  color: var(--ink);
+}
+
+.guide__venue strong {
+  font-weight: 500;
+  color: var(--ink);
+}
+
+.guide__phones {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 14px;
+}
+
+.guide__phones span {
+  flex-basis: 100%;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.guide__phones a {
+  color: var(--olive);
+  font-weight: 500;
+  text-decoration: none;
+  border-bottom: 1px solid var(--gold-soft);
+}
+
+.guide__closing {
+  margin: 28px 0 0;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 19px;
+  line-height: 1.5;
+  text-align: center;
+  color: var(--olive);
+}

@@ -1,0 +1,71 @@
+@if (stage() !== 'done') {
+  <div
+    class="intro"
+    [class.intro--leaving]="leaving()"
+    [style.background-image]="stage() === 'card' ? introBackground : null"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="intro-title"
+  >
+    @if (stage() === 'card') {
+      <div class="intro__card">
+        <app-lang-toggle class="intro__lang" />
+        <p class="intro__mono" aria-hidden="true">
+          {{ w().initials.one }}<span>&amp;</span>{{ w().initials.two }}
+        </p>
+        <p class="intro__kicker">{{ t().invite }}</p>
+        <p id="intro-title" class="intro__names">{{ w().partnerOne }} &amp; {{ w().partnerTwo }}</p>
+        <blockquote class="intro__quote">“{{ w().introQuote }}”</blockquote>
+        <button type="button" class="intro__open" (click)="open(true)">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 18V6l11-2v12" /><circle cx="6.5" cy="18" r="2.5" /><circle cx="17.5" cy="16" r="2.5" /></svg>
+          {{ t().openInvitation }}
+        </button>
+        <button type="button" class="intro__mute" (click)="open(false)">{{ t().noMusic }}</button>
+      </div>
+    } @else {
+      <video
+        class="intro__film"
+        [src]="videoSrc()"
+        autoplay
+        muted
+        playsinline
+        preload="auto"
+        (ended)="finish()"
+        (error)="finish()"
+        [attr.aria-label]="w().introQuote"
+      ></video>
+      <button type="button" class="intro__skip" (click)="finish()">{{ t().skip }}</button>
+    }
+  </div>
+}
+
+<!-- La canción de fondo: suena en bucle mientras se recorre la página. -->
+<audio
+  #audio
+  [src]="w().music.src"
+  loop
+  preload="auto"
+  (playing)="onPlaying()"
+  (pause)="onPaused()"
+></audio>
+
+<div class="player" [class.player--visible]="stage() === 'done'">
+  @if (hint()) {
+    <p class="player__hint" role="status">{{ t().tapToPlay }}</p>
+  }
+  <button
+    type="button"
+    class="player__toggle"
+    [class.player__toggle--on]="playing()"
+    [class.player__toggle--hint]="hint()"
+    (click)="toggle()"
+    [attr.aria-label]="(playing() ? t().pause : t().play) + ' · ' + w().music.title"
+    [attr.aria-pressed]="playing()"
+  >
+    @if (playing()) {
+      <span class="bars" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+    } @else {
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l11-6.5z" /></svg>
+    }
+  </button>
+</div>

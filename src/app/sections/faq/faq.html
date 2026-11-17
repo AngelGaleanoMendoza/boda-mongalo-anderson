@@ -1,0 +1,17 @@
+<section id="faq" class="section section--sand">
+  <div class="container">
+    <header class="section-head" appReveal>
+      <span class="eyebrow">{{ t().faqEyebrow }}</span>
+      <h2 class="section-title">{{ t().faqTitle }}</h2>
+    </header>
+
+    <div class="faqs" appReveal>
+      @for (faq of faqs(); track $index) {
+        <details class="faq">
+          <summary>{{ faq.question }}</summary>
+          <p>{{ faq.answer }}</p>
+        </details>
+      }
+    </div>
+  </div>
+</section>

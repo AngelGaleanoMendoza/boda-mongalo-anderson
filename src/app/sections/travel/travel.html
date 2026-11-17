@@ -1,0 +1,52 @@
+<section id="travel" class="section">
+  <div class="container">
+    <header class="section-head" appReveal>
+      <span class="eyebrow">{{ t().planTrip }}</span>
+      <h2 class="section-title">{{ t().travelTitle }}</h2>
+    </header>
+
+    <div class="guides">
+      @for (g of guides(); track g.id) {
+        <article class="guide" appReveal>
+          <header class="guide__head">
+            <span class="guide__flag" aria-hidden="true">{{ g.flag }}</span>
+            <h3 class="guide__greeting">{{ g.greeting }}</h3>
+            <p class="guide__tagline">{{ g.tagline }}</p>
+          </header>
+
+          @for (p of g.intro; track $index) {
+            <p>{{ p }}</p>
+          }
+
+          <h4 class="guide__title">{{ t().travelVenue }}</h4>
+          <p class="guide__venue">
+            <strong>{{ g.venue.name }}</strong><br />
+            {{ g.venue.address }}
+          </p>
+
+          <h4 class="guide__title">{{ t().accommodations }}</h4>
+          @for (p of g.accommodations; track $index) {
+            <p>{{ p }}</p>
+          }
+          @if (g.phones.length) {
+            <p class="guide__phones">
+              <span>{{ t().reservations }}</span>
+              @for (phone of g.phones; track phone) {
+                <a [href]="tel(phone)">{{ phone }}</a>
+              }
+            </p>
+          }
+
+          @if (g.transportation.length) {
+            <h4 class="guide__title">{{ t().transportation }}</h4>
+            @for (p of g.transportation; track $index) {
+              <p>{{ p }}</p>
+            }
+          }
+
+          <p class="guide__closing">{{ g.closing }}</p>
+        </article>
+      }
+    </div>
+  </div>
+</section>

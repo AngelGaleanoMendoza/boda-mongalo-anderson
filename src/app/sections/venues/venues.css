@@ -1,0 +1,60 @@
+.venues {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
+  gap: 24px;
+  max-width: 980px;
+  margin: 0 auto;
+}
+
+.venue {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: clamp(32px, 5vw, 48px) clamp(20px, 4vw, 36px);
+  background: var(--paper);
+  border: 1px solid var(--line);
+  text-align: center;
+}
+
+.venue__label {
+  font-family: var(--font-label);
+  font-size: clamp(44px, 6vw, 56px);
+  line-height: 1.15;
+  color: var(--olive);
+}
+
+.venue__place {
+  margin: 4px 0 28px;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+.venue__icon {
+  color: var(--gold);
+  margin-bottom: 10px;
+}
+
+.venue__name,
+.venue__dress {
+  margin: 0 0 6px;
+  font-family: var(--font-display);
+  font-size: 26px;
+  font-weight: 500;
+  line-height: 1.25;
+}
+
+.venue__address {
+  margin: 0 0 20px;
+  color: var(--muted);
+}
+
+.venue .btn {
+  margin-bottom: 24px;
+}
+
+.venue .divider {
+  margin: 8px auto 24px;
+}

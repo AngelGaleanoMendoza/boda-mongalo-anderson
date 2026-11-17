@@ -1,0 +1,58 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Justin & Melanie//Wedding//ES
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:texas-wedding@justin-melanie
+DTSTAMP:20261117T170232Z
+DTSTART:20270227T220000Z
+DTEND:20270228T050000Z
+SUMMARY:Justin & Melanie – Boda US (Texas)
+LOCATION:Texas\, Estados Unidos
+DESCRIPTION:¡Nuestra celebración en Texas! El lugar y la hora se anunciar
+ án pronto.\nTodos los detalles: https://angelgaleanomendoza.github.io/bod
+ a-mongalo-anderson/
+URL:https://angelgaleanomendoza.github.io/boda-mongalo-anderson/
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:¡Se acerca la boda de Justin y Melanie en Texas!
+TRIGGER:-P7D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:¡Se acerca la boda de Justin y Melanie en Texas!
+TRIGGER:-P6D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:¡Se acerca la boda de Justin y Melanie en Texas!
+TRIGGER:-P5D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:¡Se acerca la boda de Justin y Melanie en Texas!
+TRIGGER:-P4D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:¡Se acerca la boda de Justin y Melanie en Texas!
+TRIGGER:-P3D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:¡Se acerca la boda de Justin y Melanie en Texas!
+TRIGGER:-P2D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:¡Se acerca la boda de Justin y Melanie en Texas!
+TRIGGER:-P1D
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:¡Se acerca la boda de Justin y Melanie en Texas!
+TRIGGER:-PT3H
+END:VALARM
+END:VEVENT
+END:VCALENDAR

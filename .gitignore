@@ -42,3 +42,7 @@ __screenshots__/
 # System files
 .DS_Store
 Thumbs.db
+
+# Animación (Remotion)
+/video/node_modules
+/video/out

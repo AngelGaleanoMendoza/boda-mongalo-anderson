@@ -1,0 +1,42 @@
+<section id="countdown" class="countdown">
+  <span class="eyebrow">{{ t().countdown }}</span>
+
+  <div class="events">
+    @for (event of events(); track event.label) {
+      <article class="event">
+        <h2 class="event__label"><app-wedding-label [code]="event.code" /></h2>
+        <p class="event__date">{{ event.dateText }} · {{ event.place }}</p>
+        @if (!event.married) {
+          <div class="units" role="timer" aria-live="off">
+            @for (unit of event.units; track unit.label) {
+              <div class="unit">
+                <span class="unit__value">{{ pad(unit.value) }}</span>
+                <span class="unit__label">{{ unit.label }}</span>
+              </div>
+            }
+          </div>
+        } @else {
+          <p class="married">{{ event.daysMarried }} {{ t().days }}</p>
+          <p class="event__since">{{ t().sinceMarried }}</p>
+        }
+
+        @if (!event.married) {
+          <div class="cal">
+            <a class="btn btn--outline cal__btn" [href]="event.ics">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="5" width="17" height="15" rx="1.5" /><path d="M3.5 9.5h17M8 3v4M16 3v4M12 12.5v5M9.5 15h5" /></svg>
+              {{ t().addToCalendar }}
+            </a>
+            <figure class="cal__qr">
+              <img [src]="event.qr" width="96" height="96" alt="" />
+              <figcaption>{{ t().scanToAdd }}</figcaption>
+            </figure>
+          </div>
+        }
+      </article>
+    }
+  </div>
+
+  <p class="note">{{ t().untilDays }}</p>
+  <p class="cal__note">{{ t().reminders }}</p>
+  <a class="btn" href="#rsvp">{{ t().rsvpButton }}</a>
+</section>
